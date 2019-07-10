@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="home.Controller"
+            stylesheets="@/styles/dark_metro_style.css"
+
+>
+
+    <top>
+        <HBox prefWidth="100">
+
+            <padding>
+                <Insets topRightBottomLeft="12"/>
+            </padding>
+
+
+            <HBox>
+                <Pane prefWidth="5" prefHeight="60"/>
+                <Button fx:id="homeButton" prefWidth="75" prefHeight="60" onAction="#onHomeButtonClicked">
+                    <tooltip>
+                        <Tooltip text="Home"/>
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="/res/home_icon.png" smooth="false"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <HBox>
+                <Pane prefWidth="5" prefHeight="60"/>
+                <Button fx:id="usersButton" prefWidth="75" prefHeight="60" onAction="#onUsersButtonClicked">
+                    <tooltip>
+                        <Tooltip text="Users"/>
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="/res/user.png" smooth="false"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <HBox>
+                <Pane prefWidth="5" prefHeight="60"/>
+                <Button fx:id="feesButton" prefWidth="75" prefHeight="60" onAction="#onFeesButtonClick">
+                    <tooltip>
+                        <Tooltip text="Fees"/>
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="/res/fees.png" smooth="false"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <HBox>
+                <Pane prefWidth="5" prefHeight="60"/>
+                <Button fx:id="exitButton" prefWidth="75" prefHeight="60" onAction="#onExitButtonClick">
+                    <tooltip>
+                        <Tooltip text="Exit"/>
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="/res/exit_icon.png" smooth="false"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+            <Label text="Home" alignment="CENTER_LEFT">
+                <HBox.margin>
+                    <Insets topRightBottomLeft="18"/>
+                </HBox.margin>
+                <font>
+                    <Font name="Arial" size="34"/>
+                </font>
+
+            </Label>
+        </HBox>
+
+
+    </top>
+
+    <left>
+
+
+        <GridPane hgap="10" vgap="10" alignment="TOP_CENTER">
+
+            <padding>
+                <Insets topRightBottomLeft="16"/>
+            </padding>
+
+            <!--Manufacturer input-->
+            <!--(0,0)-->
+            <Label text="Name: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <!--(0,1)-->
+            <TextField fx:id="nameTextField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <!--Model input-->
+            <!--(1,0)-->
+            <Label text="College" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <!--(1,1)-->
+            <TextField fx:id="collegeTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <!--Rate input-->
+            <!--(2,0)-->
+            <Label text="Room no" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <!--(2,1)-->
+            <TextField fx:id="roomnoTextField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <!--IEMEI Input-->
+            <!--(3,0)-->
+            <Label fx:id="rollNoLabel" text="Roll : " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <!--(3,1)-->
+            <TextField fx:id="rollNoTextField1" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+
+            <!--Add Button-->
+            <!--(5,1)-->
+            <Button fx:id="addButton" text="Add" GridPane.rowIndex="5" GridPane.columnIndex="1"
+                    GridPane.hgrow="ALWAYS"/>
+            <Button fx:id="updateButton" text="Update" GridPane.rowIndex="5" GridPane.columnIndex="1"
+                    GridPane.hgrow="ALWAYS" visible="false"/>
+
+            <!--Clear Button-->
+            <Button fx:id="clearButton" text="Clear" GridPane.rowIndex="5" GridPane.columnIndex="0"
+                    GridPane.hgrow="ALWAYS"/>
+
+
+        </GridPane>
+
+    </left>
+
+    <center>
+        <TableView fx:id="studentTable" VBox.vgrow="ALWAYS" onKeyPressed="#onTableKeyPressed"
+                   onMouseClicked="#onMouseClicked">
+            <padding>
+                <Insets topRightBottomLeft="16"/>
+            </padding>
+
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+
+            <columns>
+
+                <TableColumn fx:id="columnName" text="Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="columnRoomno" text="Roomno">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="roomno"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="columnCollege" text="College">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="college"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="columnRollNumber" text="Roll Number">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="rollno"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
